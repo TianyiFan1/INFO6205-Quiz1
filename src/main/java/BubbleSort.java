@@ -9,8 +9,26 @@ public class BubbleSort {
      *       This optimization ensures the algorithm stops early if the array is already sorted.
      */
     public void sort (Comparable[] a){
-//        write your code here.
+        int n = a.length;
+        boolean swapped;
 
+        // Outer loop for each pass through the array
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+
+            // Inner loop to compare adjacent elements
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (a[j].compareTo(a[j + 1]) > 0) {
+                    swap(a, j, j + 1);
+                    swapped = true;
+                }
+            }
+
+            // If no elements were swapped during this pass, the array is already sorted
+            if (!swapped) {
+                break;
+            }
+        }
     }
     /**
      * Swaps two elements in the given array.
